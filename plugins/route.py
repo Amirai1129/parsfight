@@ -6,12 +6,12 @@ import secrets
 import time
 import mimetypes
 from aiohttp.http_exceptions import BadStatusLine
-from lazybot import multi_clients, work_loads, LazyPrincessBot
-from server.exceptions import FIleNotFound, InvalidHash
-from zzint import StartTime, __version__
-from util.custom_dl import ByteStreamer
-from util.time_format import get_readable_time
-from util.render_template import render_page
+from LucyBot.Bot import multi_clients, work_loads, Codeflix
+from LucyBot.server.exceptions import FIleNotFound, InvalidHash
+from LucyBot.zzint import StartTime, __version__
+from LucyBot.util.custom_dl import ByteStreamer
+from LucyBot.util.time_format import get_readable_time
+from LucyBot.util.render_template import render_page
 from info import *
 
 
@@ -19,7 +19,7 @@ routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
-    return web.json_response("LucyAutoFilter")
+    return web.json_response("Lucy_Bot")
 
 
 @routes.get(r"/watch/{path:\S+}", allow_head=True)

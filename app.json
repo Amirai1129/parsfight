@@ -1,5 +1,5 @@
 {
-    "name": "AutoFilter-Lucy",
+    "name": "Lucy auto Filter",
     "description": "When you going to send file on telegram channel this bot will save that in database, So you can search that easily in inline mode",
     "stack": "container",
     "keywords": [
@@ -15,8 +15,8 @@
       "index",
       "inline"
     ],
-    "website": "https://github.com/Codeflix-Bots/AutoFilter",
-    "repository": "https://github.com/Codeflix-Bots/AutoFilter",
+    "website": "https://github.com/codeflix-bots/autofilter",
+    "repository": "/codeflix-bots/autofilter",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
@@ -54,11 +54,11 @@
             "description": "ID of channel.Make sure bot is admin in this channel. Without subscribing this channel users cannot use bot.",
             "required": false
         },
-        "FQDN": {
-            "description": "Heroku url",
-            "required": false
-        },
         "DATABASE_URI": {
+            "description": "mongoDB URI. Get this value from https://www.mongodb.com.",
+            "required": true
+        },
+        "DATABASE_URI2": {
             "description": "mongoDB URI. Get this value from https://www.mongodb.com.",
             "required": true
         },
@@ -77,7 +77,7 @@
         "url": "heroku/python"
     }],
     "formation": {
-        "web": {
+        "worker": {
             "quantity": 1,
             "size": "eco"
         }

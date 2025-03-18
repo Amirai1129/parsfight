@@ -1,11 +1,27 @@
-FROM python:3.10
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
+FROM python:3.11.7
 
-RUN cd /
-RUN pip install -U pip && pip install -U -r requirements.txt
-WORKDIR /app
+RUN apt update && apt upgrade -y && \
+    apt install -y --no-install-recommends git && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /Codeflix_Bots
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir --upgrade pip --root-user-action=ignore && \
+    pip install --no-cache-dir -r requirements.txt --root-user-action=ignore
 
 COPY . .
-CMD ["python", "bot.py"]
+CMD ["python3", "bot.py"]
+
+
+
+## vps deploy commands 
+
+# mkdir Deendayal_botz
+# cd Deendayal_botz
+# python3 -m venv venv
+# source venv/bin/activate
+# git clone https://github.com/Deendayal403/Deendayal_dhakad.git
+# cd Deendayal_dhakad
+# pip install -r requirements.txt
+# python3 bot.py
