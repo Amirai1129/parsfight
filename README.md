@@ -1,179 +1,206 @@
-━━━━━━━━━━━━━━━━━━━━
-
-<h2 align="center">
-    ──「 ʟᴜᴄʏ ✘ ʀᴏʙᴏᴛ 」──
-</h2>
-
 <p align="center">
-  <img src="https://envs.sh/Wdj.jpg">
+  <img src="https://envs.sh/TME.jpg" alt="VJ-Filter-Bot Logo">
+</p>
+<h1 align="center">
+  VJ FILTER BOT
+</h1>
+
+![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Welcome+To+VJ+Filter+Bot!)
 </p>
 
-_**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [ʟᴜᴄʏ ʀᴏʙᴏᴛ](https://t.me/lucy_filter_bot)**_
-
-<p align="center">
-<b>𝗗𝗘𝗣𝗟𝗢𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗𝗦</b>
-</p>
-
-<h3 align="center">
-    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ 」─
-</h3>
-
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/Codeflix-Bots/l"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
-
-
-<h3 align="center">
-    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ᴠᴘs/ʟᴏᴄᴀʟ 」─
-</h3>
-
-<details><summary><b> - ғᴇᴀᴛᴜʀᴇs :</b></summary>
+## Main Feature 
+<b>
   
-## features
-- [x] 𝑺𝒉𝒐𝒓𝒕𝒏𝒆𝒓 𝑺𝒖𝒑𝒑𝒐𝒓𝒕 𝒊𝒏 𝑺𝒕𝒓𝒆𝒂𝒎 𝒂𝒏𝒅 𝑫𝒐𝒘𝒏𝒍𝒐𝒂𝒅 𝒇𝒆𝒂𝒕𝒖𝒓𝒆
-- [x] 𝑮𝒐𝒐𝒅 𝑴𝒐𝒓𝒏𝒊𝒏𝒈, 𝑨𝒇𝒕𝒆𝒓𝒏𝒐𝒐𝒏, 𝑬𝒗𝒆𝒏𝒊𝒏𝒈, 𝑵𝒊𝒈𝒉𝒕 𝒘𝒊𝒔𝒉𝒆𝒔 
-- [x] 𝑴𝒖𝒍𝒕𝒊 𝑭𝒔𝒖𝒃 𝑺𝒖𝒑𝒑𝒐𝒓𝒕
-- [x] 𝑹𝒆𝒒𝒖𝒆𝒔𝒕 𝒕𝒐 𝒋𝒐𝒊𝒏 𝒊𝒏 𝑭𝒔𝒖𝒃
-- [x] 𝑩𝒆𝒔𝒕 𝑺𝒕𝒓𝒆𝒂𝒎𝒊𝒏𝒈 𝑾𝒆𝒃𝒔𝒊𝒕𝒆
-- [x] 𝑷𝒓𝒆𝒎𝒊𝒖𝒎 𝒎𝒆𝒎𝒃𝒆𝒓𝒔𝒉𝒊𝒑 𝒎𝒂𝒏𝒂𝒈𝒆𝒎𝒆𝒏𝒕 
-- [x] 𝐶𝑢𝑠𝑡𝑜𝑚 𝑆ℎ𝑜𝑟𝑡𝑛𝑒𝑟 ( 𝐴𝑙𝑙 𝑊𝑒𝑏𝑠𝑖𝑡𝑒𝑠 )
-- [x] 𝑆𝑡𝑟𝑒𝑎𝑚 𝑜𝑛𝑙𝑖𝑛𝑒 𝑎𝑛𝑑 𝐹𝑎𝑠𝑡 𝐷𝑜𝑤𝑛𝑙𝑜𝑎𝑑
-- [x] 𝐼𝑀𝐷𝐵 𝑇𝑒𝑚𝑝𝑙𝑎𝑡𝑒 𝑆𝑒𝑡
-- [x] 𝐼𝑛𝑑𝑒𝑥𝑒𝑠 𝐹𝑖𝑙𝑒𝑠 𝑎𝑏𝑜𝑣𝑒 2𝐺𝐵
-- [x] 𝑃𝑟𝑒𝐷𝑉𝐷 𝑎𝑛𝑑 𝐶𝑎𝑚𝑅𝑖𝑝 𝐷𝑒𝑙𝑒𝑡𝑒 𝑀𝑜𝑑𝑒
-- [x] 𝑀𝑢𝑙𝑡𝑖𝑝𝑙𝑒 𝐹𝑖𝑙𝑒 𝐷𝑒𝑙𝑒𝑡𝑖𝑜𝑛
-- [x] 𝑆𝑒𝑡𝑡𝑖𝑛𝑔𝑠 𝑀𝑒𝑛𝑢
-- [x] 𝐹𝑜𝑟𝑐𝑒 𝑆𝑢𝑏𝑠𝑐𝑟𝑖𝑝𝑡𝑖𝑜𝑛
-- [x] 𝑊𝑒𝑙𝑐𝑜𝑚𝑒 𝑀𝑒𝑠𝑠𝑎𝑔𝑒
-- [x] 𝐴𝑢𝑡𝑜𝑚𝑎𝑡𝑖𝑐 𝐹𝑖𝑙𝑒 𝐹𝑖𝑙𝑡𝑒𝑟𝑖𝑛𝑔
-- [x] 𝐷𝑜𝑢𝑏𝑙𝑒 𝐹𝑖𝑙𝑡𝑒𝑟 𝐵𝑢𝑡𝑡𝑜𝑛
-- [x] 𝑆𝑖𝑛𝑔𝑙𝑒 𝐹𝑖𝑙𝑡𝑒𝑟 𝐵𝑢𝑡𝑡𝑜𝑛
-- [x] 𝐵𝑜𝑡 𝑃𝑀 𝐹𝑖𝑙𝑒 𝑆𝑒𝑛𝑑 𝑀𝑜𝑑𝑒
-- [x] 𝐴𝑢𝑡𝑜 𝐹𝑖𝑙𝑒 𝑆𝑒𝑛𝑑
-- [x] 𝐹𝑜𝑟𝑤𝑎𝑟𝑑 𝑅𝑒𝑠𝑡𝑟𝑖𝑐𝑡𝑖𝑜𝑛
-- [x] 𝐹𝑖𝑙𝑒 𝑃𝑟𝑜𝑡𝑒𝑐𝑡
-- [x] 𝑀𝑎𝑛𝑢𝑎𝑙 𝐹𝑖𝑙𝑒 𝐹𝑖𝑙𝑡𝑒𝑟𝑖𝑛𝑔
-- [x] 𝐺𝑙𝑜𝑏𝑎𝑙 𝐹𝑖𝑙𝑒 𝐹𝑖𝑙𝑡𝑒𝑟𝑖𝑛𝑔
-- [x] 𝐼𝑀𝐷𝐵
-- [x] 𝐴𝑑𝑚𝑖𝑛 𝐶𝑜𝑚𝑚𝑎𝑛𝑑𝑠
-- [x] 𝑈𝑠𝑒𝑟 𝐵𝑟𝑜𝑎𝑑𝑐𝑎𝑠𝑡
-- [x] 𝐺𝑟𝑜𝑢𝑝 𝐵𝑟𝑜𝑎𝑑𝑐𝑎𝑠𝑡
-- [x] 𝐼𝑛𝑑𝑒𝑥
-- [x] 𝐼𝑀𝐷𝐵 𝑠𝑒𝑎𝑟𝑐ℎ
-- [x] 𝐼𝑛𝑙𝑖𝑛𝑒 𝑆𝑒𝑎𝑟𝑐ℎ
-- [x] 𝑅𝑎𝑛𝑑𝑜𝑚 𝑝𝑖𝑐𝑠
-- [x] 𝑖𝑑𝑠 𝑎𝑛𝑑 𝑈𝑠𝑒𝑟 𝑖𝑛𝑓𝑜 
-- [x] 𝑆𝑡𝑎𝑡𝑠
-- [x] 𝑈𝑠𝑒𝑟𝑠
-- [x] 𝐶ℎ𝑎𝑡𝑠
-- [x] 𝑈𝑠𝑒𝑟 𝐵𝑎𝑛
-- [x] 𝑈𝑠𝑒𝑟 𝑈𝑛𝑏𝑎𝑛
-- [x] 𝐶ℎ𝑎𝑡 𝐿𝑒𝑎𝑣𝑒
-- [x] 𝐶ℎ𝑎𝑡 𝐷𝑖𝑠𝑎𝑏𝑙𝑒
-- [x] Ai.𝑆𝑝𝑒𝑙𝑙𝑖𝑛𝑔 𝐶ℎ𝑒𝑐𝑘 𝐹𝑒𝑎𝑡𝑢𝑟𝑒
-- [x] 𝐹𝑖𝑙𝑒 𝑆𝑡𝑜𝑟𝑒
-- [x] 𝐴𝑢𝑡𝑜 𝐷𝑒𝑙𝑒𝑡𝑒
-- [x] Refer future
-- [x] Redeem Code Future
-- [x] Top Trending future
-- [x] Most Search
-- [x] 𝐴𝑛𝑑 𝑀𝑜𝑟𝑒...
+- [x] Clone Feature & On / Off
+- [x] Multiple Database Support & On / Off
+- [x] Premium Plan Feature 
+- [x] Refer To Get Premium
+- [x] Ai Spell Check 
+- [x] Custom Force Subscribe
+- [x] Rename Feature & On / Off
+- [x] Premium And Refer On / Off 
+- [x] Stream Feature On / Off 
+- [x] Url Shortner On / Off  
+- [x] Pm Search On / Off
+- [x] Request To Join Force Subscribe With Auto File Send 
+- [x] Custom Stream
+- [x] Stream Feature With Many Player Support 
+- [x] Language & Season & Quality & Episode & Year Choose Option
+- [x] Auto Approve & On / Off
+- [x] Custom Url Shortner Support
+- [x] Token Verification & On / Off
+- [x] Send All Button 
+- [x] Custom Tutorial Button
+- [x] Bot Pm File Auto Delete
 
-and more....
+- Note : You Can Turn On Or Off Every Feature, Just Use Which Feature You Want By Turning It On.
 
-## ᴀᴅᴍɪɴ ᴀɴᴅ ᴜsᴇʀs ᴄᴏᴍᴍᴀɴᴅs
-- [x] start - ꜱᴛᴀʀᴛ ᴍᴇ...
-- [x] connect - ᴄᴏɴɴᴇᴄᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪɴ ᴘᴍ...
-- [x] shortlink - ᴄᴏɴɴᴇᴄᴛ ʏᴏᴜʀ ꜱʜᴏʀᴛɴᴇʀ ᴡᴇʙꜱɪᴛᴇ...
-- [x] set_tutorial - ꜱᴇᴛ ʏᴏᴜʀ ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴠɪᴅ...
-- [x] remove_tutorial - ʀᴇᴍᴏᴠᴇ ʏᴏᴜʀ ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴠɪᴅ...
-- [x] settings - ᴄʜᴀɴɢᴇ ʙᴏᴛ ꜱᴇᴛᴛɪɴɢꜱ...
-- [x] disconnect - ᴅɪꜱᴄᴏɴɴᴇᴄᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ...
-- [x] connections - ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘꜱ...
-- [x] plan - ᴄʜᴇᴄᴋ ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʀᴇᴍɪᴜᴍ ᴍᴇᴍʙᴇʀꜱʜɪᴘ ᴘʟᴀɴꜱ...
-- [x] myplan - ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴄᴜʀʀᴜɴᴛ ᴘʟᴀɴ...
-- [x] stats - ᴄʜᴇᴄᴋ ᴍʏ ᴅᴀᴛᴀʙᴀꜱᴇ...
-- [x] info - ɢᴇᴛ ᴜꜱᴇʀ ɪɴꜰᴏ...
-- [x] id - ɢᴇᴛ ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ...
-- [x] shortlink_info - ɢᴇᴛ ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ꜱʜᴏʀᴛʟɪɴᴋ ɪɴꜰᴏ...
-- [x] shorlinkon - ᴏɴ ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ꜱʜᴏʀᴛʟɪɴᴋ ꜰʀᴏᴍ ɢʀᴘ...
-- [x] shortlinkoff - ᴏꜰꜰ ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ꜱʜᴏʀᴛʟɪɴᴋ ꜰʀᴏᴍ ɢʀᴘ...
-- [x] link - ᴄʀᴇᴀᴛᴇ ʟɪɴᴋ ꜰᴏʀ ᴏɴᴇ ᴘᴏꜱᴛ...
-- [x] batch - ᴄʀᴇᴀᴛᴇ ʟɪɴᴋ ꜰᴏʀ ʙᴜʟᴋ ᴘᴏꜱᴛꜱ...
-- [x] deleteall - ᴅᴇʟᴇᴛᴇ ᴀʟʟ ꜰɪʟᴇꜱ ꜰʀᴏᴍ ᴅʙ...
-- [x] delete - ᴅᴇʟᴇᴛᴇ ꜱᴘᴇᴄɪꜰɪᴄ ꜰɪʟᴇ ꜰʀᴏᴍ ᴅʙ...
-- [x] deletefiles - ᴅᴇʟᴇᴛᴇ ᴘʀᴇᴅᴠᴅ ᴀɴᴅ ᴄᴀᴍʀɪᴘ ꜰɪʟᴇꜱ...
-- [x] broadcast - ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴜꜱᴇʀꜱ...
-- [x] grp_broadcast - ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴍᴇꜱꜱᴀɢᴇꜱ ᴛᴏ ɢʀᴏᴜᴘꜱ...
-- [x] enable - ᴇɴᴀʙʟᴇ ᴛᴏ ᴊᴏɪɴ ɪɴ ɢʀᴏᴜᴘ...
-- [x] disable - ᴅɪꜱᴀʙʟᴇ ᴀɴʏ ɢʀᴏᴜᴘ...
-- [x] leave - ʟᴇᴀᴠᴇ ꜰʀᴏᴍ ᴀɴʏ ɢʀᴏᴜᴘ...
-- [x] ban - ʙᴀɴ ᴜꜱᴇʀ ᴛᴏ ᴜꜱᴇ ʙᴏᴛ...
-- [x] unban - ᴜɴʙᴀɴ ᴜꜱᴇʀ ᴛᴏ ᴜꜱᴇ ʙᴏᴛ...
-- [x] add_redeem - to create redeem code
-- [x] add_premium - ᴀᴅᴅ ᴀɴʏ ᴜꜱᴇʀ ᴛᴏ ᴘʀᴇᴍɪᴜᴍ...
-- [x] remove_premium - ʀᴇᴍᴏᴠᴇ ᴀɴʏ ᴜꜱᴇʀ ꜰʀᴏᴍ ᴘʀᴇᴍɪᴜᴍ...
-- [x] premium_users - ɢᴇᴛ ʟɪꜱᴛ ᴏꜰ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ...
-- [x] restart - ʀᴇꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ...
-- [x]  ᴜsᴇʀs - ᴛᴏ ᴠɪᴇᴡ ᴏғ ʟɪsᴛᴏғ ᴜsᴇʀs, ᴜsɪɴɢ ʙᴏᴛ [ғᴏʀ ᴀᴅᴍɪɴs ᴜsᴇ ᴏɴʟʏ]
-- [x]  ʙʀᴏᴀᴅᴄᴀsᴛ - ᴍᴇssᴀɢᴇ ʙʀᴏᴀᴅᴄᴀsᴛ ᴄᴏᴍᴍᴀɴᴅ [ғᴏʀ ᴀᴅᴍɪɴs ᴜsᴇ ᴏɴʟʏ]
-- [x]  ʙᴀɴ - ʟᴇᴛs ʏᴏᴜ ʙᴀɴ ᴀ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ɢʀᴏᴜᴘ ᴡɪᴛʜᴏᴜᴛ ɢɪᴠɪɴɢ ʜɪᴍ ᴛʜᴇ ᴘᴏssɪʙɪʟɪᴛʏ ᴛᴏ Jᴏɪɴ ᴀɢᴀɪɴ ᴜsɪɴɢ ᴛʜᴇ ʟɪɴᴋ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ. [ғᴏʀ ᴀᴅᴍɪɴs ᴜsᴇ ᴏɴʟʏ].
-- [x]  sᴇᴛᴛɪɴɢs - ʟᴇᴛs ʏᴏᴜ ᴍᴀɴᴀɢᴇ ᴀʟʟ ᴛʜᴇ Bᴏᴛ sᴇᴛᴛɪɴɢs ɪɴ ᴀ ɢʀᴏᴜᴘ.  [ғᴏʀ ᴀᴅᴍɪɴs ᴜsᴇ ᴏɴʟʏ]
-- [x]  ᴍᴜᴛᴇ/ᴋɪᴄᴋ - ʟᴇᴛs ʏᴏᴜ ʀᴇᴍᴏᴠᴇ ᴀ ᴜsᴇʀ ғʀᴏᴍ ɢʀᴏᴜᴘ's ʙʟᴀᴄᴋʟɪsᴛ, ɢɪᴠɪɴɢ ᴛʜᴇᴍ ᴛʜᴇ ᴘᴏssɪʙɪʟɪᴛʏ ᴛᴏ Jᴏɪɴ ᴀɢᴀɪɴ ᴡɪᴛʜ ᴛʜᴇ ʟɪɴᴋ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ.  [ғᴏʀ ᴀᴅᴍɪɴs ᴜsᴇ ᴏɴʟʏ].
-</details>
+Join My <a href='https://telegram.dog/vj_botz'>Update Channel</a> For More Update Regarding Repo.</b>
 
-## ᴅᴇᴘʟᴏʏᴍᴇɴᴛ ᴠᴀʀɪᴀʙʟᴇs
-```- [x] API_ID - get it from telegram app
-- [x] API_HASH - get it from telegram app
-- [x] BOT_TOKEN - get it from telegram app
-- [x] ADMINS - for 2 or more '12345678 89674523' add space between ids
-- [x] LOG_CHANNEL - add a private channel id
-- [x] CHANNELS - add your database channel id ,if u will share your file here the bot will add the file in database autometiccaly
-- [x] DATABASE_URI - if you dont know how to get it, read this documentation from scratch
+### How To Deploy : [Video Tutorial](https://youtu.be/3SJR7vH2kRo)
+
+## Commands
 ```
-- [x] ᴍᴏʀᴇ ᴄᴏɴғɪɢs [ᴄʜᴀɴɢᴇ ʜᴇʀᴇ..](https://github.com/Codeflix-Bots/AutoFilter/Lucy/info.py)
+• /start - 𝑇𝑜 𝑠𝑡𝑎𝑟𝑡 𝑡ℎ𝑒 𝑏𝑜𝑡
+• /clone - 𝐶𝑟𝑒𝑎𝑡𝑒 𝑦𝑜𝑢𝑟 𝑜𝑤𝑛 𝑐𝑙𝑜𝑛𝑒 𝑎𝑢𝑡𝑜 𝑓𝑖𝑙𝑡𝑒𝑟 𝑏𝑜𝑡
+• /index - 𝑖𝑛𝑑𝑒𝑥 𝑓𝑖𝑙𝑒 𝑓𝑟𝑜𝑚 𝑦𝑜𝑢𝑟 𝑐ℎ𝑎𝑛𝑛𝑒𝑙
+• /setskip - 𝑇𝑜 𝑠𝑘𝑖𝑝 𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑚𝑒𝑠𝑠𝑎𝑔𝑒𝑠 𝑤ℎ𝑒𝑛 𝑖𝑛𝑑𝑒𝑥𝑖𝑛𝑔 𝑓𝑖𝑙𝑒𝑠
+• /logs - 𝑡𝑜 𝑔𝑒𝑡 𝑡ℎ𝑒 𝑟𝑒𝑐𝑒𝑛𝑡 𝑒𝑟𝑟𝑜𝑟𝑠
+• /stats - 𝑡𝑜 𝑔𝑒𝑡 𝑠𝑡𝑎𝑡𝑢𝑠 𝑜𝑓 𝑓𝑖𝑙𝑒𝑠 𝑖𝑛 𝑑𝑏.
+• /connections - 𝑇𝑜 𝑠𝑒𝑒 𝑎𝑙𝑙 𝑐𝑜𝑛𝑛𝑒𝑐𝑡𝑒𝑑 𝑔𝑟𝑜𝑢𝑝𝑠
+• /settings - 𝑇𝑜 𝑜𝑝𝑒𝑛 𝑠𝑒𝑡𝑡𝑖𝑛𝑔𝑠 𝑚𝑒𝑛𝑢
+• /filter - 𝑎𝑑𝑑 𝑚𝑎𝑛𝑢𝑎𝑙 𝑓𝑖𝑙𝑡𝑒𝑟𝑠
+• /filters - 𝑣𝑖𝑒𝑤 𝑓𝑖𝑙𝑡𝑒𝑟𝑠
+• /connect - 𝑐𝑜𝑛𝑛𝑒𝑐𝑡 𝑡𝑜 𝑃𝑀.
+• /disconnect - 𝑑𝑖𝑠𝑐𝑜𝑛𝑛𝑒𝑐𝑡 𝑓𝑟𝑜𝑚 𝑃𝑀
+• /del - 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎 𝑓𝑖𝑙𝑡𝑒𝑟
+• /delall - 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎𝑙𝑙 𝑓𝑖𝑙𝑡𝑒𝑟𝑠
+• /deleteall - 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎𝑙𝑙 𝑖𝑛𝑑𝑒𝑥𝑒𝑑 𝑓𝑖𝑙𝑒𝑠.
+• /delete - 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎 𝑠𝑝𝑒𝑐𝑖𝑓𝑖𝑐 𝑓𝑖𝑙𝑒 𝑓𝑟𝑜𝑚 𝑖𝑛𝑑𝑒𝑥.
+• /info - 𝑔𝑒𝑡 𝑢𝑠𝑒𝑟 𝑖𝑛𝑓𝑜
+• /id - 𝑔𝑒𝑡 𝑡𝑔 𝑖𝑑𝑠.
+• /imdb - 𝑓𝑒𝑡𝑐ℎ 𝑖𝑛𝑓𝑜 𝑓𝑟𝑜𝑚 𝑖𝑚𝑑𝑏.
+• /search - 𝑇𝑜 𝑠𝑒𝑎𝑟𝑐ℎ 𝑓𝑟𝑜𝑚 𝑣𝑎𝑟𝑖𝑜𝑢𝑠 𝑠𝑜𝑢𝑟𝑐𝑒𝑠
+• /users - 𝑡𝑜 𝑔𝑒𝑡 𝑙𝑖𝑠𝑡 𝑜𝑓 𝑚𝑦 𝑢𝑠𝑒𝑟𝑠 𝑎𝑛𝑑 𝑖𝑑𝑠.
+• /chats - 𝑡𝑜 𝑔𝑒𝑡 𝑙𝑖𝑠𝑡 𝑜𝑓 𝑡ℎ𝑒 𝑚𝑦 𝑐ℎ𝑎𝑡𝑠 𝑎𝑛𝑑 𝑖𝑑𝑠 
+• /leave  - 𝑡𝑜 𝑙𝑒𝑎𝑣𝑒 𝑓𝑟𝑜𝑚 𝑎 𝑐ℎ𝑎𝑡.
+• /disable  -  𝑑𝑜 𝑑𝑖𝑠𝑎𝑏𝑙𝑒 𝑎 𝑐ℎ𝑎𝑡.
+• /enable - 𝑟𝑒-𝑒𝑛𝑎𝑏𝑙𝑒 𝑐ℎ𝑎𝑡.
+• /ban  - 𝑡𝑜 𝑏𝑎𝑛 𝑎 𝑢𝑠𝑒𝑟.
+• /unban  - 𝑡𝑜 𝑢𝑛𝑏𝑎𝑛 𝑎 𝑢𝑠𝑒𝑟.
+• /channel - 𝑡𝑜 𝑔𝑒𝑡 𝑙𝑖𝑠𝑡 𝑜𝑓 𝑡𝑜𝑡𝑎𝑙 𝑐𝑜𝑛𝑛𝑒𝑐𝑡𝑒𝑑 𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑠
+• /broadcast - 𝑡𝑜 𝑏𝑟𝑜𝑎𝑑𝑐𝑎𝑠𝑡 𝑎 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑡𝑜 𝑎𝑙𝑙 𝑢𝑠𝑒𝑟𝑠
+• /grp_broadcast - 𝑇𝑜 𝑏𝑟𝑜𝑎𝑑𝑐𝑎𝑠𝑡 𝑎 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑡𝑜 𝑎𝑙𝑙 𝑐𝑜𝑛𝑛𝑒𝑐𝑡𝑒𝑑 𝑔𝑟𝑜𝑢𝑝𝑠.
+• /batch - 𝑡𝑜 𝑐𝑟𝑒𝑎𝑡𝑒 𝑙𝑖𝑛𝑘 𝑓𝑜𝑟 𝑚𝑢𝑙𝑡𝑖𝑝𝑙𝑒 𝑝𝑜𝑠𝑡𝑠
+• /link - 𝑡𝑜 𝑐𝑟𝑒𝑎𝑡𝑒 𝑙𝑖𝑛𝑘 𝑓𝑜𝑟 𝑜𝑛𝑒 𝑝𝑜𝑠𝑡
+• /set_template - 𝑇𝑜 𝑠𝑒𝑡 𝑎 𝑐𝑢𝑠𝑡𝑜𝑚 𝐼𝑀𝐷𝑏 𝑡𝑒𝑚𝑝𝑙𝑎𝑡𝑒 𝑓𝑜𝑟 𝑖𝑛𝑑𝑖𝑣𝑖𝑑𝑢𝑎𝑙 𝑔𝑟𝑜𝑢𝑝𝑠
+• /gfilter - 𝑇𝑜 𝑎𝑑𝑑 𝑔𝑙𝑜𝑏𝑎𝑙 𝑓𝑖𝑙𝑡𝑒𝑟𝑠.
+• /gfilters - 𝑇𝑜 𝑣𝑖𝑒𝑤 𝑙𝑖𝑠𝑡 𝑜𝑓 𝑎𝑙𝑙 𝑔𝑙𝑜𝑏𝑎𝑙 𝑓𝑖𝑙𝑡𝑒𝑟𝑠.
+• /delg - 𝑇𝑜 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎 𝑠𝑝𝑒𝑐𝑖𝑓𝑖𝑐 𝑔𝑙𝑜𝑏𝑎𝑙 𝑓𝑖𝑙𝑡𝑒𝑟.
+• /delallg - 𝑇𝑜 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎𝑙𝑙 𝑔𝑙𝑜𝑏𝑎𝑙 𝑓𝑖𝑙𝑡𝑒𝑟𝑠 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 𝑏𝑜𝑡'𝑠 𝑑𝑎𝑡𝑎𝑏𝑎𝑠𝑒.
+• /deletefiles - 𝑇𝑜 𝑑𝑒𝑙𝑒𝑡𝑒 𝑃𝑟𝑒𝐷𝑉𝐷 𝑎𝑛𝑑 𝐶𝑎𝑚𝑅𝑖𝑝 𝐹𝑖𝑙𝑒𝑠 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 𝑏𝑜𝑡'𝑠 𝑑𝑎𝑡𝑎𝑏𝑎𝑠𝑒.
+• /add_premium - 𝐴𝑑𝑑 𝑢𝑠𝑒𝑟 𝑡𝑜 𝑝𝑟𝑒𝑚𝑖𝑢𝑚 𝑙𝑖𝑠𝑡
+• /remove_premium - 𝑅𝑒𝑚𝑜𝑣𝑒 𝑢𝑠𝑒𝑟 𝑓𝑟𝑜𝑚 𝑝𝑟𝑒𝑚𝑖𝑢𝑚 𝑙𝑖𝑠𝑡
+• /plan - 𝐶ℎ𝑒𝑐𝑘 𝑝𝑙𝑎𝑛 𝑑𝑒𝑡𝑎𝑖𝑙𝑠
+• /myplan - 𝐶ℎ𝑒𝑐𝑘 𝑦𝑜𝑢𝑟 𝑝𝑙𝑎𝑛 𝑠𝑡𝑎𝑡𝑠
+• /shortlink - 𝑠𝑒𝑡 𝑦𝑜𝑢𝑟 𝑢𝑟𝑙 𝑠ℎ𝑜𝑟𝑡𝑛𝑒𝑟 𝑖𝑛 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝
+• /setshortlinkoff  - 𝑜𝑓𝑓 𝑠ℎ𝑜𝑟𝑡𝑙𝑖𝑛𝑘 𝑖𝑛 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝
+• /setshortlinkon - 𝑜𝑛 𝑠ℎ𝑜𝑟𝑡𝑙𝑖𝑛𝑘 𝑖𝑛 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝
+• /shortlink_info - 𝑐ℎ𝑒𝑐𝑘 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝 𝑎𝑙𝑙 𝑠ℎ𝑜𝑟𝑡𝑙𝑖𝑛𝑘 𝑎𝑛𝑑 𝑡𝑢𝑡𝑜𝑟𝑖𝑎𝑙 𝑙𝑖𝑛𝑘 𝑑𝑒𝑡𝑎𝑖𝑙𝑠
+• /set_tutorial - 𝑠𝑒𝑡 𝑦𝑜𝑢𝑟 𝑢𝑟𝑙 𝑠ℎ𝑜𝑟𝑡𝑛𝑒𝑟 ℎ𝑜𝑤 𝑡𝑜 𝑜𝑝𝑒𝑛 𝑙𝑖𝑛𝑘 𝑢𝑟𝑙
+• /remove_tutorial - 𝑟𝑒𝑚𝑜𝑣𝑒 𝑦𝑜𝑢𝑟 𝑡𝑢𝑡𝑜𝑟𝑖𝑎𝑙 𝑢𝑟𝑙
+• /restart  - 𝑟𝑒𝑠𝑡𝑎𝑟𝑡 𝑡ℎ𝑒 𝑏𝑜𝑡 𝑠𝑒𝑟𝑣𝑒𝑟
+• /fsub - 𝑎𝑑𝑑 𝑓𝑜𝑟𝑐𝑒 𝑠𝑢𝑏𝑠𝑐𝑟𝑖𝑏𝑒 𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑖𝑛 𝑔𝑟𝑜𝑢𝑝
+• /nofsub - 𝑟𝑒𝑚𝑜𝑣𝑒 𝑜𝑟 𝑜𝑓𝑓 𝑓𝑜𝑟𝑐𝑒 𝑠𝑢𝑏𝑠𝑐𝑟𝑖𝑏𝑒 𝑖𝑛 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝
+• /rename - 𝑟𝑒𝑛𝑎𝑚𝑒 𝑦𝑜𝑢𝑟 𝑓𝑖𝑙𝑒
+• /set_caption - 𝑎𝑑𝑑 𝑐𝑎𝑝𝑡𝑖𝑜𝑛 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟 𝑟𝑒𝑛𝑎𝑚𝑒𝑑 𝑓𝑖𝑙𝑒
+• /see_caption - 𝑠𝑒𝑒 𝑦𝑜𝑢𝑟 𝑠𝑎𝑣𝑒𝑑 𝑐𝑎𝑝𝑡𝑖𝑜𝑛
+• /del_caption - 𝑑𝑒𝑙𝑒𝑡𝑒 𝑦𝑜𝑢𝑟 𝑠𝑎𝑣𝑒𝑑 𝑐𝑎𝑝𝑡𝑖𝑜𝑛
+• /set_thumb - 𝑎𝑑𝑑 𝑡ℎ𝑢𝑚𝑏𝑛𝑎𝑖𝑙 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟 𝑟𝑒𝑛𝑎𝑚𝑒𝑑 𝑓𝑖𝑙𝑒
+• /view_thumb - 𝑣𝑖𝑒𝑤 𝑦𝑜𝑢𝑟 𝑠𝑎𝑣𝑒𝑑 𝑡ℎ𝑢𝑚𝑏𝑛𝑎𝑖𝑙
+• /del_thumb - 𝑑𝑒𝑙𝑒𝑡𝑒 𝑦𝑜𝑢𝑟 𝑠𝑎𝑣𝑒𝑑 𝑡ℎ𝑢𝑚𝑏𝑛𝑎𝑖𝑙
+• /stream - 𝑔𝑒𝑛𝑒𝑟𝑎𝑡𝑒 𝑠𝑡𝑟𝑒𝑎𝑚 𝑎𝑛𝑑 𝑑𝑜𝑤𝑛𝑙𝑜𝑎𝑑 𝑙𝑖𝑛𝑘 𝑜𝑓 𝑦𝑜𝑢𝑟 𝑓𝑖𝑙𝑒
+• /telegraph - 𝑔𝑒𝑡 𝑡𝑒𝑙𝑒𝑔𝑟𝑎𝑝ℎ 𝑙𝑖𝑛𝑘 𝑜𝑓 𝑎𝑛𝑦 𝑓𝑖𝑙𝑒 𝑢𝑛𝑑𝑒𝑟 5𝑚𝑏
+• /stickerid - 𝑡𝑜 𝑔𝑒𝑡 𝑖𝑑 𝑎𝑛𝑑 𝑢𝑛𝑖𝑞𝑢𝑒 𝐼'𝑑 𝑜𝑓 𝑠𝑡𝑖𝑐𝑘𝑒𝑟
+• /font - 𝑡𝑜 𝑔𝑒𝑡 𝑎𝑛𝑦 𝑡𝑦𝑝𝑒 𝑜𝑓 𝑓𝑜𝑛𝑡 𝑜𝑓 𝑎𝑛𝑦 𝑤𝑜𝑟𝑑
+• /repo - 𝑔𝑒𝑡 𝑎𝑛𝑦 𝑟𝑒𝑝𝑜 𝑙𝑖𝑛𝑘 𝑏𝑦 𝑠𝑒𝑎𝑟𝑐ℎ𝑖𝑛𝑔
+• /purgerequests - 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎𝑙𝑙 𝑗𝑜𝑖𝑛 𝑟𝑒𝑞𝑢𝑒𝑠𝑡𝑠 𝑓𝑟𝑜𝑚 𝑑𝑎𝑡𝑎𝑏𝑎𝑠𝑒
+• /totalrequests - 𝑔𝑒𝑡 𝑡𝑜𝑡𝑎𝑙 𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑗𝑜𝑖𝑛 𝑟𝑒𝑞𝑢𝑒𝑠𝑡 𝑓𝑟𝑜𝑚 𝑑𝑎𝑡𝑎𝑏𝑎𝑠𝑒
+```
+
+## Variables
+
+### Required Variables
+* <b>`BOT_TOKEN`: Create a bot using [@BotFather](https://telegram.dog/BotFather), and get the Telegram API token.
+* `API_ID`: Get this value from [telegram.org](https://my.telegram.org/apps)
+* `API_HASH`: Get this value from [telegram.org](https://my.telegram.org/apps)
+* `CHANNELS`: This Is File Channel, Username or ID of channel or group. Separate multiple IDs by space
+* `ADMINS`: Username or ID of Admin. Separate multiple Admins by space
+* `DATABASE_URI`: [mongoDB](https://www.mongodb.com) URI. Get this value from [mongoDB](https://www.mongodb.com). For more help watch this [video](https://youtu.be/DAHRmFdw99o)
+* `LOG_CHANNEL` : A channel to log the activities of bot. Make sure bot is an admin in the channel.</b>
+
+
+<details><summary><b>Deploy To Heroku</b></summary>
+<p>
+<br>
+<b>First Connect Your GitHub Account Then Select Repo And Deploy With Procfile.</b>
+</p>
 </details>
 
+<details><summary><b>Deploy To Koyeb</b></summary>
+<br>
+<b>The fastest way to deploy the application is to click the Deploy to Koyeb button below.</b>
+<br>
+<br>
 
-<details>
-<summary><h3>
-- <b> ᴠᴘs/ʟᴏᴄᴀʟ ᴅᴇᴘʟᴏʏᴍᴇɴᴛ ᴍᴇᴛʜᴏᴅ </b>
-</h3></summary>
-
-- Get your [Necessary Variables](https://github.com/Codeflix-Bots/AutoFilter/main/info.py)
-- git clone https://github.com/Codeflix-Bots/AutoFilter
-- # Install Packages
-- pip3 install -U -r requirements.txt
-- Edit info.py with variables as given below then run bot
-- python3 bot.py
-
-<p align="center">
-  <img src="https://graph.org/file/6126c635b91aa6bd8a4b3.jpg">
-</p>
-
-
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/VJBots/VJ-Filter-Bot&branch=Tech_VJ&name=VJ-Filter-Bot)
 </details>
-━━━━━━━━━━━━━━━━━━━━
 
-<h3 align="center">
-    ─「 sᴜᴩᴩᴏʀᴛ 」─
-</h3>
+<details><summary><b>Deploy To Render</b></summary>
+<br>
+<b>
+Use these commands:
+<br>
+<br>
+• Build Command: <code>pip3 install -U -r requirements.txt</code>
+<br>
+<br>
+• Start Command: <code>python3 bot.py</code>
+<br>
+<br>
+Go to https://uptimerobot.com/ and add a monitor to keep your bot alive.
+<br>
+<br>
+Use these settings when adding a monitor:</b>
+<br>
+<br>
+<img src="https://telegra.ph/file/a79a156e44f43c9833b50.jpg" alt="render template">
+<br>
+<br>
+<b>Click on the below button to deploy directly to render ↓</b>
+<br>
+<br>
+<a href="https://render.com/deploy?repo=https://github.com/VJBots/VJ-Filter-Bot/tree/Tech_VJ">
+<img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+</a>
+</details>
 
-<p align="center">
-<a href="https://telegram.me/codeflixsupport"><img src="https://img.shields.io/badge/-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a>
-</p>
-<p align="center">
-<a href="https://telegram.me/codeflix_bots"><img src="https://img.shields.io/badge/-Support%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
-</p>
+<details><summary><b>Deploy To VPS</summary>
 
-━━━━━━━━━━━━━━━━━━━━
 
-<h3 align="center">
-    ─「 ᴄʀᴇᴅɪᴛs 」─
-</h3>
+`git clone https://github.com/VJBots/VJ-Filter-Bot`
 
-- <b>[ʏᴀᴛᴏ](https://github.com/Codeflix-Bots)  ➻  [sᴏᴍᴇᴛʜɪɴɢ](https://t.me/cosmic_freak) </b>
-- <b>[ᴅᴇᴇɴᴅᴀʏᴀʟ](https://github.com/Codeflix-Bots)  ➻  [sᴏᴍᴇᴛʜɪɴɢ](https://github.com/Deendayal403/Deendayal_dhakad) </b>
-- <b>[ʏᴜᴊɪ](https://github.com/Codeflix-Bots)  ➻  [sᴏᴍᴇᴛʜɪɴɢ](https://t.me/nova_flix) </b>
+Install Packages
+
+`pip3 install -U -r requirements.txt`
+
+Edit info.py with variables as given below then run bot
+
+`python3 bot.py`
+
+</b>
+</details>
+
+<hr>
+
+
+## Thanks to 
+ - <b>Thanks To [Pyrogram Library](https://github.com/pyrogram/pyrogram) & [Pyrofork Library](https://github.com/Mayuri-Chan/pyrofork)
+ - Thanks To [Tech VJ](https://youtube.com/@Tech_VJ) To Modify And Add Amazing Feature In The Repo
+ - Thanks To [Eva Marie](https://t.me/TeamEvamaria) For Base Repo
+ - Thanks To All Everyone In This Journey</b>
+
+## Note 🏷️
  
-<b>ᴀɴᴅ ᴀʟʟ [ᴛʜᴇ ᴄᴏɴᴛʀɪʙᴜᴛᴏʀs](https://github.com/Codeflix-Bots/LucyV2/graphs/contributors) ᴡʜᴏ ʜᴇʟᴩᴇᴅ ɪɴ ᴍᴀᴋɪɴɢ ʟᴜᴄʏ ʀᴏʙᴏᴛ ᴜsᴇғᴜʟ & ᴩᴏᴡᴇʀғᴜʟ 🖤 </b>
+[![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://telegram.me/KingVJ01) 
 
-━━━━━━━━━━━━━━━━━━━━
+<b>Fork The Repo And Edit As Per Your Needs.</b>
+
+## Disclaimer
+[![GNU Affero General Public License 2.0](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.en.html#header)    
+<b>Licensed under [GNU AGPL 2.0.](https://github.com/VJBots/VJ-Filter-Bot/blob/Tech_VJ/LICENSE)
+Selling The Codes To Other People For Money Is *Strictly Prohibited*.</b>
+
+</pre>
+</p>
+</details>

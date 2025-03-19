@@ -1,27 +1,16 @@
-FROM python:3.11.7
+# Don't Remove Credit @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
+# Ask Doubt on telegram @KingVJ01
 
-RUN apt update && apt upgrade -y && \
-    apt install -y --no-install-recommends git && \
-    rm -rf /var/lib/apt/lists/*
+FROM python:3.10.8-slim-buster
 
-WORKDIR /Codeflix_Bots
+RUN apt update && apt upgrade -y
+RUN apt install git -y
+COPY requirements.txt /requirements.txt
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir --upgrade pip --root-user-action=ignore && \
-    pip install --no-cache-dir -r requirements.txt --root-user-action=ignore
-
-COPY . .
-CMD ["python3", "bot.py"]
-
-
-
-## vps deploy commands 
-
-# mkdir Deendayal_botz
-# cd Deendayal_botz
-# python3 -m venv venv
-# source venv/bin/activate
-# git clone https://github.com/Deendayal403/Deendayal_dhakad.git
-# cd Deendayal_dhakad
-# pip install -r requirements.txt
-# python3 bot.py
+RUN cd /
+RUN pip3 install -U pip && pip3 install -U -r requirements.txt
+RUN mkdir /VJ-FILTER-BOT
+WORKDIR /VJ-FILTER-BOT
+COPY . /VJ-FILTER-BOT
+CMD ["python", "bot.py"]

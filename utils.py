@@ -1,34 +1,26 @@
-import logging
-from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
+# Don't Remove Credit @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+import logging, asyncio, os, re, random, pytz, aiohttp, requests, string, json, http.client
 from info import *
 from imdb import Cinemagoer 
-import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
 from pyrogram import enums
+from pyrogram.errors import *
 from typing import Union
 from Script import script
-import pytz
-import random 
-import re
-import os
-from datetime import datetime, date, time, timedelta
-import string
+from datetime import datetime, date
 from typing import List
 from database.users_chats_db import db
+from database.join_reqs import JoinReqs
 from bs4 import BeautifulSoup
-import requests
-import aiohttp
 from shortzy import Shortzy
-import http.client
-import json
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-BTN_URL_REGEX = re.compile(
-    r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
-)
+join_db = JoinReqs
+BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))")
 
 imdb = Cinemagoer() 
 TOKENS = {}
@@ -39,69 +31,68 @@ SMART_OPEN = '“'
 SMART_CLOSE = '”'
 START_CHAR = ('\'', '"', SMART_OPEN)
 
-
+# temp db for banned 
 class temp(object):
-   
     BANNED_USERS = []
     BANNED_CHATS = []
     ME = None
+    BOT = None
     CURRENT=int(os.environ.get("SKIP", 2))
     CANCEL = False
     MELCOW = {}
     U_NAME = None
     B_NAME = None
-    B_LINK = None
     GETALL = {}
     SHORT = {}
     SETTINGS = {}
     IMDB_CAP = {}
-    VERIFY = {}
 
 
-async def is_req_subscribed(bot, query):
-    if await db.find_join_req(query.from_user.id):
-        return True
-    try:
-        user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
-    except UserNotParticipant:
-        pass
-    except Exception as e:
-        logger.exception(e)
-    else:
-        if user.status != enums.ChatMemberStatus.BANNED:
-            return True
-
-    return False
-
-async def is_subscribed(bot, query, channels):
+async def pub_is_subscribed(bot, query, channel):
     btn = []
-    for channel_id in channels:
+    for id in channel:
+        chat = await bot.get_chat(int(id))
         try:
-            chat = await bot.get_chat(int(channel_id))
-            await bot.get_chat_member(channel_id, query.from_user.id)
+            await bot.get_chat_member(id, query.from_user.id)
         except UserNotParticipant:
             btn.append(
-                [InlineKeyboardButton(f'❤️ {chat.title}', url=chat.invite_link)]
+                [InlineKeyboardButton(f'Join {chat.title}', url=chat.invite_link)]
             )
         except Exception as e:
             pass
     return btn
 
-async def is_check_admin(bot, chat_id, user_id):
-    try:
-        member = await bot.get_chat_member(chat_id, user_id)
-        return member.status in [enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER]
-    except:
+async def is_subscribed(bot, query):
+    if REQUEST_TO_JOIN_MODE == True and join_db().isActive():
+        try:
+            user = await join_db().get_user(query.from_user.id)
+            if user and user["user_id"] == query.from_user.id:
+                return True
+            else:
+                try:
+                    user_data = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+                except UserNotParticipant:
+                    pass
+                except Exception as e:
+                    logger.exception(e)
+                else:
+                    if user_data.status != enums.ChatMemberStatus.BANNED:
+                        return True
+        except Exception as e:
+            logger.exception(e)
+            return False
+    else:
+        try:
+            user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        except UserNotParticipant:
+            pass
+        except Exception as e:
+            logger.exception(e)
+        else:
+            if user.status != enums.ChatMemberStatus.BANNED:
+                return True
         return False
-    
-async def get_status(bot_id):
-    try:
-        return await db.movie_update_status(bot_id) or False  
-    except Exception as e:
-        logging.error(f"Error in get_movie_update_status: {e}")
-        return False  
 
-    
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
         query = (query.strip()).lower()
@@ -134,6 +125,8 @@ async def get_poster(query, bulk=False, id=False, file=None):
     else:
         movieid = query
     movie = imdb.get_movie(movieid)
+    if not movie:
+        return None
     if movie.get("original air date"):
         date = movie["original air date"]
     elif movie.get("year"):
@@ -180,14 +173,9 @@ async def get_poster(query, bulk=False, id=False, file=None):
         'url':f'https://www.imdb.com/title/tt{movieid}'
     }
 
-
 async def broadcast_messages(user_id, message):
     try:
-        m = await message.copy(chat_id=user_id)
-        try:
-            await m.pin(both_sides=True)
-        except:
-            pass
+        await message.copy(chat_id=user_id)
         return True, "Success"
     except FloodWait as e:
         await asyncio.sleep(e.x)
@@ -197,6 +185,7 @@ async def broadcast_messages(user_id, message):
         logging.info(f"{user_id}-Removed from Database, since deleted account.")
         return False, "Deleted"
     except UserIsBlocked:
+        await db.delete_user(int(user_id))
         logging.info(f"{user_id} -Blocked the bot.")
         return False, "Blocked"
     except PeerIdInvalid:
@@ -234,21 +223,15 @@ async def search_gagala(text):
     return [title.getText() for title in titles]
 
 async def get_settings(group_id):
-    settings = temp.SETTINGS.get(group_id)
-    if not settings:
-        settings = await db.get_settings(group_id)
-        temp.SETTINGS[group_id] = settings
+    settings = await db.get_settings(group_id)
     return settings
     
 async def save_group_settings(group_id, key, value):
     current = await get_settings(group_id)
-    current[key] = value
-    temp.SETTINGS[group_id] = current
+    current.update({key: value})
     await db.update_settings(group_id, current)
     
 def get_size(size):
-    """Get size in readable format"""
-
     units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
     size = float(size)
     i = 0
@@ -279,7 +262,6 @@ def get_file_id(msg: Message):
                 return obj
 
 def extract_user(message: Message) -> Union[int, str]:
-    """extracts the user from a message"""
     user_id = None
     user_first_name = None
     if message.reply_to_message:
@@ -337,7 +319,6 @@ def last_online(from_user):
         time += from_user.last_online_date.strftime("%a, %d %b %Y, %H:%M:%S")
     return time
 
-
 def split_quotes(text: str) -> List:
     if not any(text.startswith(char) for char in START_CHAR):
         return text.split(None, 1)
@@ -350,7 +331,10 @@ def split_quotes(text: str) -> List:
         counter += 1
     else:
         return text.split(None, 1)
+
+    # 1 to avoid starting quote, and counter is exclusive so avoids ending
     key = remove_escapes(text[1:counter].strip())
+    # index will be in range, or `else` would have been executed and returned
     rest = text[counter + 1:].strip()
     if not key:
         key = text[0] + text[0]
@@ -492,15 +476,13 @@ def humanbytes(size):
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
 
-def get_readable_time(seconds):
-    periods = [('d', 86400), ('h', 3600), ('m', 60), ('s', 1)]
-    result = []
-    for period_name, period_seconds in periods:
-        if seconds >= period_seconds:
-            period_value, seconds = divmod(seconds, period_seconds)
-            result.append(f'{int(period_value)}{period_name}')
-    return ' '.join(result)  
 
+
+async def get_clone_shortlink(link, url, api):
+    shortzy = Shortzy(api_key=api, base_site=url)
+    link = await shortzy.convert(link)
+    return link
+                           
 async def get_shortlink(chat_id, link):
     settings = await get_settings(chat_id) #fetching settings for group
     if 'shortlink' in settings.keys():
@@ -513,36 +495,6 @@ async def get_shortlink(chat_id, link):
         URL = SHORTLINK_URL
         API = SHORTLINK_API
     if URL == "api.shareus.io":
-        # method 1:
-        # https = link.split(":")[0] #splitting https or http from link
-        # if "http" == https: #if https == "http":
-        #     https = "https"
-        #     link = link.replace("http", https) #replacing http to https
-        # conn = http.client.HTTPSConnection("api.shareus.io")
-        # payload = json.dumps({
-        #   "api_key": "4c1YTBacB6PTuwogBiEIFvZN5TI3",
-        #   "monetization": True,
-        #   "destination": link,
-        #   "ad_page": 3,
-        #   "category": "Entertainment",
-        #   "tags": ["trendinglinks"],
-        #   "monetize_with_money": False,
-        #   "price": 0,
-        #   "currency": "INR",
-        #   "purchase_note":""
-        
-        # })
-        # headers = {
-        #   'Keep-Alive': '',
-        #   'Content-Type': 'application/json'
-        # }
-        # conn.request("POST", "/generate_link", payload, headers)
-        # res = conn.getresponse()
-        # data = res.read().decode("utf-8")
-        # parsed_data = json.loads(data)
-        # if parsed_data["status"] == "success":
-        #   return parsed_data["link"]
-    #method 2
         url = f'https://{URL}/easy_api'
         params = {
             "key": API,
@@ -563,61 +515,30 @@ async def get_shortlink(chat_id, link):
     
 async def get_tutorial(chat_id):
     settings = await get_settings(chat_id) #fetching settings for group
-    if 'tutorial' in settings.keys():
-        if settings['is_tutorial']:
-            TUTORIAL_URL = settings['tutorial']
-        else:
-            TUTORIAL_URL = TUTORIAL
-    else:
-        TUTORIAL_URL = TUTORIAL
-    return TUTORIAL_URL
+    return settings['tutorial']
         
-async def get_verify_shorted_link(link):
-    API = SHORTLINK_API
-    URL = SHORTLINK_URL
-    https = link.split(":")[0]
-    if "http" == https:
-        https = "https"
-        link = link.replace("http", https)
-
-    if URL == "api.shareus.in":
-        url = f"https://{URL}/shortLink"
-        params = {"token": API,
-                  "format": "json",
-                  "link": link,
-                  }
+async def get_verify_shorted_link(link, url, api):
+    API = api
+    URL = url
+    if URL == "api.shareus.io":
+        url = f'https://{URL}/easy_api'
+        params = {
+            "key": API,
+            "link": link,
+        }
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
-                    data = await response.json(content_type="text/html")
-                    if data["status"] == "success":
-                        return data["shortlink"]
-                    else:
-                        logger.error(f"Error: {data['message']}")
-                        return f'https://{URL}/shortLink?token={API}&format=json&link={link}'
-
+                    data = await response.text()
+                    return data
         except Exception as e:
             logger.error(e)
-            return f'https://{URL}/shortLink?token={API}&format=json&link={link}'
+            return link
     else:
-        url = f'https://{URL}/api'
-        params = {'api': API,
-                  'url': link,
-                  }
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
-                    data = await response.json()
-                    if data["status"] == "success":
-                        return data['shortenedUrl']
-                    else:
-                        logger.error(f"Error: {data['message']}")
-                        return f'https://{URL}/api?api={API}&link={link}'
-
-        except Exception as e:
-            logger.error(e)
-            return f'{URL}/api?api={API}&link={link}'
-
+        shortzy = Shortzy(api_key=API, base_site=URL)
+        link = await shortzy.convert(link)
+        return link
+        
 async def check_token(bot, userid, token):
     user = await bot.get_users(userid)
     if not await db.is_user_exist(user.id):
@@ -634,106 +555,48 @@ async def check_token(bot, userid, token):
     else:
         return False
 
-async def get_token(bot, userid, link, fileid):
+async def get_token(bot, userid, link):
     user = await bot.get_users(userid)
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id, user.first_name)
         await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(user.id, user.mention))
     token = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
     TOKENS[user.id] = {token: False}
-    link = f"{link}verify-{user.id}-{token}-{fileid}"
-    shortened_verify_url = await get_verify_shorted_link(link)
-    return str(shortened_verify_url)
-
-async def get_verify_status(userid):
-    status = temp.VERIFY.get(userid)
-    if not status:
-        status = await db.get_verified(userid)
-        temp.VERIFY[userid] = status
-    return status
-    
-async def update_verify_status(userid, date_temp, time_temp):
-    status = await get_verify_status(userid)
-    status["date"] = date_temp
-    status["time"] = time_temp
-    temp.VERIFY[userid] = status
-    await db.update_verification(userid, date_temp, time_temp)
+    link = f"{link}verify-{user.id}-{token}"
+    shortened_verify_url = await get_verify_shorted_link(link, VERIFY_SHORTLINK_URL, VERIFY_SHORTLINK_API)
+    if VERIFY_SECOND_SHORTNER == True:
+        snd_link = await get_verify_shorted_link(shortened_verify_url, VERIFY_SND_SHORTLINK_URL, VERIFY_SND_SHORTLINK_API)
+        return str(snd_link)
+    else:
+        return str(shortened_verify_url)
 
 async def verify_user(bot, userid, token):
-    user = await bot.get_users(int(userid))
+    user = await bot.get_users(userid)
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id, user.first_name)
         await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(user.id, user.mention))
     TOKENS[user.id] = {token: True}
     tz = pytz.timezone('Asia/Kolkata')
-    date_var = datetime.now(tz)+timedelta(hours=VERIFY_EXPIRE)
-    temp_time = date_var.strftime("%H:%M:%S")
-    date_var, time_var = str(date_var).split(" ")
-    await update_verify_status(user.id, date_var, temp_time)
+    today = date.today()
+    VERIFIED[user.id] = str(today)
 
 async def check_verification(bot, userid):
-    user = await bot.get_users(int(userid))
+    user = await bot.get_users(userid)
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id, user.first_name)
         await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(user.id, user.mention))
-    
     tz = pytz.timezone('Asia/Kolkata')
     today = date.today()
-    now = datetime.now(tz)
-    curr_time = now.strftime("%H:%M:%S")
-    hour1, minute1, second1 = curr_time.split(":")
-    curr_time = time(int(hour1), int(minute1), int(second1))
-    status = await get_verify_status(user.id)
-    date_var = status["date"]
-    time_var = status["time"]
-    years, month, day = date_var.split('-')
-    comp_date = date(int(years), int(month), int(day))
-    hour, minute, second = time_var.split(":")
-    comp_time = time(int(hour), int(minute), int(second))
-    if comp_date<today:
-        return False
-    else:
-        if comp_date == today:
-            if comp_time<curr_time:
-                return False
-            else:
-                return True
+    if user.id in VERIFIED.keys():
+        EXP = VERIFIED[user.id]
+        years, month, day = EXP.split('-')
+        comp = date(int(years), int(month), int(day))
+        if comp<today:
+            return False
         else:
             return True
-            
-async def get_seconds(time_string):
-    def extract_value_and_unit(ts):
-        value = ""
-        unit = ""
-
-        index = 0
-        while index < len(ts) and ts[index].isdigit():
-            value += ts[index]
-            index += 1
-
-        unit = ts[index:].lstrip()
-
-        if value:
-            value = int(value)
-
-        return value, unit
-
-    value, unit = extract_value_and_unit(time_string)
-
-    if unit == 's':
-        return value
-    elif unit == 'min':
-        return value * 60
-    elif unit == 'hour':
-        return value * 3600
-    elif unit == 'day':
-        return value * 86400
-    elif unit == 'month':
-        return value * 86400 * 30
-    elif unit == 'year':
-        return value * 86400 * 365
     else:
-        return 0
+        return False  
     
 async def send_all(bot, userid, files, ident, chat_id, user_name, query):
     settings = await get_settings(chat_id)
@@ -745,40 +608,41 @@ async def send_all(bot, userid, files, ident, chat_id, user_name, query):
     try:
         if ENABLE_SHORTLINK:
             for file in files:
-                title = file.file_name
-                size = get_size(file.file_size)
-                await bot.send_message(chat_id=userid, text=f"<b>Hᴇʏ ᴛʜᴇʀᴇ {user_name} 👋🏽 \n\n✅ Sᴇᴄᴜʀᴇ ʟɪɴᴋ ᴛᴏ ʏᴏᴜʀ ғɪʟᴇ ʜᴀs sᴜᴄᴄᴇssғᴜʟʟʏ ʙᴇᴇɴ ɢᴇɴᴇʀᴀᴛᴇᴅ ᴘʟᴇᴀsᴇ ᴄʟɪᴄᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʙᴜᴛᴛᴏɴ\n\n🗃️ Fɪʟᴇ Nᴀᴍᴇ : {title}\n🔖 Fɪʟᴇ Sɪᴢᴇ : {size}</b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📤 Dᴏᴡɴʟᴏᴀᴅ 📥", url=await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}"))]]))
+                title = file["file_name"]
+                size = get_size(file["file_size"])
+                if not await db.has_premium_access(userid) and SHORTLINK_MODE == True:
+                    await bot.send_message(chat_id=userid, text=f"<b>Hᴇʏ ᴛʜᴇʀᴇ {user_name} 👋🏽 \n\n✅ Sᴇᴄᴜʀᴇ ʟɪɴᴋ ᴛᴏ ʏᴏᴜʀ ғɪʟᴇ ʜᴀs sᴜᴄᴄᴇssғᴜʟʟʏ ʙᴇᴇɴ ɢᴇɴᴇʀᴀᴛᴇᴅ ᴘʟᴇᴀsᴇ ᴄʟɪᴄᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʙᴜᴛᴛᴏɴ\n\n🗃️ Fɪʟᴇ Nᴀᴍᴇ : {title}\n🔖 Fɪʟᴇ Sɪᴢᴇ : {size}</b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📤 Dᴏᴡɴʟᴏᴀᴅ 📥", url=await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=files_{file['file_id']}"))]]))
         else:
             for file in files:
-                    f_caption = file.caption
-                    title = file.file_name
-                    size = get_size(file.file_size)
-                    if CUSTOM_FILE_CAPTION:
-                        try:
-                            f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title,
-                                                                    file_size='' if size is None else size,
-                                                                    file_caption='' if f_caption is None else f_caption)
-                        except Exception as e:
-                            print(e)
-                            f_caption = f_caption
-                    if f_caption is None:
-                        f_caption = f"{title}"
-                    await bot.send_cached_media(
-                        chat_id=userid,
-                        file_id=file.file_id,
-                        caption=f_caption,
-                        protect_content=True if ident == "filep" else False,
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                                [
-                                InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
-                                InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
-                            ],[
-                                InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/cosmic_freak")
-                                ]
-                            ]
+                f_caption = file["caption"]
+                title = file["file_name"]
+                size = get_size(file["file_size"])
+                if CUSTOM_FILE_CAPTION:
+                    try:
+                        f_caption = CUSTOM_FILE_CAPTION.format(
+                            file_name='' if title is None else title,
+                            file_size='' if size is None else size,
+                            file_caption='' if f_caption is None else f_caption
                         )
+                    except Exception as e:
+                        print(e)
+                        f_caption = f_caption
+                if f_caption is None:
+                    f_caption = f"{title}"
+                await bot.send_cached_media(
+                    chat_id=userid,
+                    file_id=file["file_id"],
+                    caption=f_caption,
+                    protect_content=True if ident == "filep" else False,
+                    reply_markup=InlineKeyboardMarkup(
+                        [[
+                            InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
+                            InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
+                        ],[
+                            InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url=OWNER_LNK)
+                        ]]
                     )
+                )
     except UserIsBlocked:
         await query.answer('Uɴʙʟᴏᴄᴋ ᴛʜᴇ ʙᴏᴛ ᴍᴀʜɴ !', show_alert=True)
     except PeerIdInvalid:
@@ -791,11 +655,11 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
         IMDB_CAP = temp.IMDB_CAP.get(query.from_user.id)
         if IMDB_CAP:
             cap = IMDB_CAP
-            cap+="\n\n<b>📚 <u>Your Requested Files</u> 👇\n</b>"
+            cap+="<b>\n<u>🍿 حتما از دکمه ها برای دسترسی بهتر به فایل ها استفاده کنید 👇</u></b>\n\n"
             for file in files:
-                cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>📁 [{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+                cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file['file_id']}'>[{get_size(file['file_size'])}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file['file_name'].split()))}\n\n</a></b>"
         else:
-            imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
+            imdb = await get_poster(search, file=(files[0])["file_name"]) if settings["imdb"] else None
             if imdb:
                 TEMPLATE = script.IMDB_TEMPLATE_TXT
                 cap = TEMPLATE.format(
@@ -829,38 +693,46 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
                     url=imdb['url'],
                     **locals()
                 )
-                cap+="\n\n<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
+                cap+="<b>\n<u>🍿 حتما از دکمه ها برای دسترسی بهتر به فایل ها استفاده کنید 👇</u></b>\n\n"
                 for file in files:
-                    cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+                    cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file['file_id']}'>[{get_size(file['file_size'])}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file['file_name'].split()))}\n\n</a></b>"
             else:
-                cap = f"<b>🧿 ᴛɪᴛʟᴇ : <code>{search}</code>\n📂 ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ : <code>{total_results}</code>\n📝 ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {message.from_user.mention}\n⏰ ʀᴇsᴜʟᴛ ɪɴ : <code>{remaining_seconds} Sᴇᴄᴏɴᴅs</code>\n⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : 👇\n⚡ {message.chat.title}\n</b>"
-                cap+="\n\n<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
+                cap = f"<b>Tʜᴇ Rᴇꜱᴜʟᴛꜱ Fᴏʀ ☞ {search}\n\nRᴇǫᴜᴇsᴛᴇᴅ Bʏ ☞ {query.from_user.mention}\n\nʀᴇsᴜʟᴛ sʜᴏᴡ ɪɴ ☞ {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {query.message.chat.title}\n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
+                cap+="<b><u>🍿 Your Movie Files 👇</u></b>\n\n"
                 for file in files:
-                    cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+                    cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file['file_id']}'>[{get_size(file['file_size'])}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file['file_name'].split()))}\n\n</a></b>"
     else:
-        cap = f"<b>🧿 ᴛɪᴛʟᴇ : <code>{search}</code>\n📂 ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ : <code>{total_results}</code>\n📝 ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {query.from_user.mention}\n⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : 👇\n⚡ DEENDAYAL_DHAKAD\n</b>"
-        cap+="\n\n<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
+        cap = f"<b>Tʜᴇ Rᴇꜱᴜʟᴛꜱ Fᴏʀ ☞ {search}\n\nRᴇǫᴜᴇsᴛᴇᴅ Bʏ ☞ {query.from_user.mention}\n\nʀᴇsᴜʟᴛ sʜᴏᴡ ɪɴ ☞ {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {query.message.chat.title} \n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
+        cap+="<b><u>🍿 Your Movie Files 👇</u></b>\n\n"
         for file in files:
-            cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+            cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file['file_id']}'>[{get_size(file['file_size'])}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file['file_name'].split()))}\n\n</a></b>"
     return cap
 
 
-async def log_error(client, error_message):
-    """Logs errors to the specified LOG_CHANNEL."""
-    try:
-        await client.send_message(
-            chat_id=LOG_CHANNEL, 
-            text=f"<b>⚠️ Error Log:</b>\n<code>{error_message}</code>"
-        )
-    except Exception as e:
-        print(f"Failed to log error: {e}")
-
-
-def get_time(seconds):
-    periods = [(' ᴅᴀʏs', 86400), (' ʜᴏᴜʀ', 3600), (' ᴍɪɴᴜᴛᴇ', 60), (' sᴇᴄᴏɴᴅ', 1)]
-    result = ''
-    for period_name, period_seconds in periods:
-        if seconds >= period_seconds:
-            period_value, seconds = divmod(seconds, period_seconds)
-            result += f'{int(period_value)}{period_name}'
-    return result
+async def get_seconds(time_string):
+    def extract_value_and_unit(ts):
+        value = ""
+        unit = ""
+        index = 0
+        while index < len(ts) and ts[index].isdigit():
+            value += ts[index]
+            index += 1
+        unit = ts[index:]
+        if value:
+            value = int(value)
+        return value, unit
+    value, unit = extract_value_and_unit(time_string)
+    if unit == 's':
+        return value
+    elif unit == 'min':
+        return value * 60
+    elif unit == 'hour':
+        return value * 3600
+    elif unit == 'day':
+        return value * 86400
+    elif unit == 'month':
+        return value * 86400 * 30
+    elif unit == 'year':
+        return value * 86400 * 365
+    else:
+        return 0
